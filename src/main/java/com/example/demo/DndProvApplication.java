@@ -10,16 +10,12 @@ public class DndProvApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DndProvApplication.class, args);
-		System.out.println(Campaign.Race.randomRace().toString().replace('_', ' ') + " " +
-				Campaign.CharacterClass.randomCharacterClass().toString().replace('_', ' '));
-		System.out.println(Campaign.Race.randomRace().toString().replace('_', ' ') + " " +
-				Campaign.CharacterClass.randomCharacterClass().toString().replace('_', ' '));
-		System.out.println(Campaign.Race.randomRace().toString().replace('_', ' ') + " " +
-				Campaign.CharacterClass.randomCharacterClass().toString().replace('_', ' '));
-		System.out.println(Campaign.Race.randomRace().toString().replace('_', ' ') + " " +
-				Campaign.CharacterClass.randomCharacterClass().toString().replace('_', ' '));
-		System.out.println(Campaign.Setting.randomSetting().toString().replace('_', ' '));
-		System.out.println(Campaign.Motivation.randomMotivation().toString().replace('_', ' '));
+		System.out.println(Campaign.Race.randomRace() + " " + Campaign.CharacterClass.randomCharacterClass());
+		System.out.println(Campaign.Race.randomRace() + " " + Campaign.CharacterClass.randomCharacterClass());
+		System.out.println(Campaign.Race.randomRace() + " " + Campaign.CharacterClass.randomCharacterClass());
+		System.out.println(Campaign.Race.randomRace() + " " + Campaign.CharacterClass.randomCharacterClass());
+		System.out.println(Campaign.Setting.randomSetting());
+		System.out.println(Campaign.Motivation.randomMotivation());
 	}
 
 }

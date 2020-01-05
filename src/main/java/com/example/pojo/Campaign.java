@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,8 +27,8 @@ public class Campaign {
 			  
 		private static final Random RANDOM = new Random();
 		
-		 public static Race randomRace()  {
-			    return RACE_VALUES.get(RANDOM.nextInt(SIZE));
+		 public static String randomRace()  {
+			    return RACE_VALUES.get(RANDOM.nextInt(SIZE)).toString().replace('_', ' ');
 			  }
 	}
 	
@@ -40,8 +44,8 @@ public class Campaign {
 			  
 		private static final Random RANDOM = new Random();
 		
-		public static CharacterClass randomCharacterClass()  {
-			    return CHARACTER_CLASS_VALUES.get(RANDOM.nextInt(SIZE));
+		public static String randomCharacterClass()  {
+			    return CHARACTER_CLASS_VALUES.get(RANDOM.nextInt(SIZE)).toString().replace('_', ' ');
 			  }
 	}
 	
@@ -61,8 +65,8 @@ public class Campaign {
 			  
 		private static final Random RANDOM = new Random();
 		
-		public static Setting randomSetting()  {
-			    return SETTING_VALUES.get(RANDOM.nextInt(SIZE));
+		public static String randomSetting()  {
+			    return SETTING_VALUES.get(RANDOM.nextInt(SIZE)).toString().replace('_', ' ');
 			  }
 	}
 	
@@ -81,17 +85,182 @@ public class Campaign {
 			  
 		private static final Random RANDOM = new Random();
 		
-		public static Motivation randomMotivation()  {
-			    return MOTIVATION_VALUES.get(RANDOM.nextInt(SIZE));
+		public static String randomMotivation()  {
+			    return MOTIVATION_VALUES.get(RANDOM.nextInt(SIZE)).toString().replace('_', ' ');
 			  }
 	}
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int campaignId;
+	
+	String character1 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
+	
+	String character2 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
+	
+	String character3 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
+	
+	String character4 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
+	
+	String setting1 = Setting.randomSetting();
+	
+	String motivation1 = Motivation.randomMotivation();
+	
+	String campaignNotes;
+
+	public int getCampaignId() {
+		return campaignId;
+	}
+
+	public void setCampaignId(int campaignId) {
+		this.campaignId = campaignId;
+	}
+
+	public String getCharacter1() {
+		return character1;
+	}
+
+	public void setCharacter1(String character1) {
+		this.character1 = character1;
+	}
+
+	public String getCharacter2() {
+		return character2;
+	}
+
+	public void setCharacter2(String character2) {
+		this.character2 = character2;
+	}
+
+	public String getCharacter3() {
+		return character3;
+	}
+
+	public void setCharacter3(String character3) {
+		this.character3 = character3;
+	}
+
+	public String getCharacter4() {
+		return character4;
+	}
+
+	public void setCharacter4(String character4) {
+		this.character4 = character4;
+	}
+
+	public String getSetting1() {
+		return setting1;
+	}
+
+	public void setSetting1(String setting1) {
+		this.setting1 = setting1;
+	}
+
+	public String getMotivation1() {
+		return motivation1;
+	}
+
+	public void setMotivation1(String motivation1) {
+		this.motivation1 = motivation1;
+	}
+
+	public String getCampaignNotes() {
+		return campaignNotes;
+	}
+
+	public void setCampaignNotes(String campaignNotes) {
+		this.campaignNotes = campaignNotes;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + campaignId;
+		result = prime * result + ((campaignNotes == null) ? 0 : campaignNotes.hashCode());
+		result = prime * result + ((character1 == null) ? 0 : character1.hashCode());
+		result = prime * result + ((character2 == null) ? 0 : character2.hashCode());
+		result = prime * result + ((character3 == null) ? 0 : character3.hashCode());
+		result = prime * result + ((character4 == null) ? 0 : character4.hashCode());
+		result = prime * result + ((motivation1 == null) ? 0 : motivation1.hashCode());
+		result = prime * result + ((setting1 == null) ? 0 : setting1.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campaign other = (Campaign) obj;
+		if (campaignId != other.campaignId)
+			return false;
+		if (campaignNotes == null) {
+			if (other.campaignNotes != null)
+				return false;
+		} else if (!campaignNotes.equals(other.campaignNotes))
+			return false;
+		if (character1 == null) {
+			if (other.character1 != null)
+				return false;
+		} else if (!character1.equals(other.character1))
+			return false;
+		if (character2 == null) {
+			if (other.character2 != null)
+				return false;
+		} else if (!character2.equals(other.character2))
+			return false;
+		if (character3 == null) {
+			if (other.character3 != null)
+				return false;
+		} else if (!character3.equals(other.character3))
+			return false;
+		if (character4 == null) {
+			if (other.character4 != null)
+				return false;
+		} else if (!character4.equals(other.character4))
+			return false;
+		if (motivation1 == null) {
+			if (other.motivation1 != null)
+				return false;
+		} else if (!motivation1.equals(other.motivation1))
+			return false;
+		if (setting1 == null) {
+			if (other.setting1 != null)
+				return false;
+		} else if (!setting1.equals(other.setting1))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Campaign [campaignId=" + campaignId + ", character1=" + character1 + ", character2=" + character2
+				+ ", character3=" + character3 + ", character4=" + character4 + ", setting1=" + setting1
+				+ ", motivation1=" + motivation1 + ", campaignNotes=" + campaignNotes + "]";
+	}
+
+	public Campaign(int campaignId, String character1, String character2, String character3, String character4,
+			String setting1, String motivation1, String campaignNotes) {
+		super();
+		this.campaignId = campaignId;
+		this.character1 = character1;
+		this.character2 = character2;
+		this.character3 = character3;
+		this.character4 = character4;
+		this.setting1 = setting1;
+		this.motivation1 = motivation1;
+		this.campaignNotes = campaignNotes;
+	}
+
+	public Campaign() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	
-	
-
-	
-	
-
 }
