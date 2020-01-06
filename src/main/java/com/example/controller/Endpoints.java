@@ -15,28 +15,28 @@ import com.example.service.CampaignService;
 @RequestMapping("/")
 public class Endpoints {
 	
-	CampaignService campService;
+	CampaignService campaignService;
 	
 	@Autowired
-	public void setLaptopService(CampaignService campService) {
-		this.campService = campService;
+	public void setCampaignService(CampaignService campaignService) {
+		this.campaignService = campaignService;
 	}
 	
-	@GetMapping("campaign/")
+	@GetMapping("/campaign")
 	public Campaign createCampaign() {
-		Campaign campaign = campService.makeCampaign();
+		Campaign campaign = campaignService.makeCampaign();
 		return campaign;
 	}
 	
 	@GetMapping("campaign/{id}")
 	public Campaign getCampaign(@PathVariable int id){
-		Campaign campaign = campService.getCampaign(id);
+		Campaign campaign = campaignService.getCampaign(id);
 		return campaign;
 	}
 	
 	@PutMapping("campaign/update/{id}")
     public Campaign updateCampaign(@RequestBody Campaign campaign) {
-		Campaign campaignUpdate = campService.updateCampaign(campaign);
+		Campaign campaignUpdate = campaignService.updateCampaign(campaign);
 		return campaignUpdate;
 	}
 }

@@ -5,13 +5,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
+@Table(name = "campaign")
 public class Campaign {
 	
 	public static enum Race{
@@ -91,21 +96,29 @@ public class Campaign {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	int campaignId;
 	
+	@Column(name="character1")
 	String character1 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
 	
+	@Column(name="character2")
 	String character2 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
 	
+	@Column(name="character3")
 	String character3 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
 	
+	@Column(name="character4")
 	String character4 = Race.randomRace() + " " + CharacterClass.randomCharacterClass();
 	
+	@Column(name="setting1")
 	String setting1 = Setting.randomSetting();
 	
+	@Column(name="motivation1")
 	String motivation1 = Motivation.randomMotivation();
 	
+	@Column(name="campaign_notes")
 	String campaignNotes = "dm notes go here";
 
 	public int getCampaignId() {
