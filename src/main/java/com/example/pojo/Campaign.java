@@ -106,7 +106,7 @@ public class Campaign {
 	
 	String motivation1 = Motivation.randomMotivation();
 	
-	String campaignNotes;
+	String campaignNotes = "dm notes go here";
 
 	public int getCampaignId() {
 		return campaignId;
